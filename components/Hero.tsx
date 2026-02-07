@@ -102,7 +102,7 @@ export default function Hero() {
                 <img
                   src="/profile.jpg"
                   alt="Rohit Nanjundareddy"
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto rounded-2xl"
                 />
                 }
               </div>
