@@ -52,8 +52,8 @@ export default function Contact() {
             <div className="space-y-4">
               <div className="p-4 bg-gray-800 rounded-lg border border-gray-700">
                 <p className="text-sm text-gray-400">Email</p>
-                <a href="mailto:rnanj@uic.com" className="text-white hover:text-indigo-400">
-                  rnanj@uic.edu
+                <a href="mailto:rohitnanjundareddy@gmail.com" className="text-white hover:text-indigo-400">
+                  rohitnanjundareddy@gmail.com
                 </a>
               </div>
               

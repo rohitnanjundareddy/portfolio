@@ -12,10 +12,12 @@ import {
   Car,
   MessageSquare,
   Activity,
-  FileText
+  FileText,
+  TrendingUp,
+  Calendar
 } from 'lucide-react'
 
-type ProjectCategory = 'all' | 'ml' | 'cv' | 'robotics' | 'web'
+type ProjectCategory = 'featured' | 'all' | 'ml' | 'cv' | 'robotics' | 'web'
 
 interface Project {
   title: string
@@ -26,27 +28,90 @@ interface Project {
   github?: string
   demo?: string
   icon: React.ReactNode
-  date?: string
+  date: string
+  featured?: boolean
 }
 
 const projects: Project[] = [
   {
-    title: 'Mammography Risk Prediction',
-    description: 'Deep learning model for breast cancer risk prediction using multi-view mammography with self-attention modules for CC and MLO views and with rad-dino feature.',
+    title: 'Real-Time Stock Forecasting with Multi-Agent RAG',
+    description: 'Multi-agent AI system integrating live market data, company signals, and financial news using LLM-based extraction and RAG pipelines. Leverages Temporal Fusion Transformer (TFT), FinBERT sentiment modeling, and TabNet forecasting for intraday and 30-day predictions, achieving 68% accuracy.',
+    image: '/projects/stock-forecasting.jpg',
+    tags: ['LangChain', 'RAG', 'TFT', 'FinBERT', 'TabNet', 'Multi-Agent'],
+    category: ['ml', 'llm'],
+    icon: <TrendingUp className="w-5 h-5" />,
+    date: 'May 2025 - Feb 2026',
+    featured: true,
+  },
+  {
+    title: 'Early Breast Cancer Risk Detection Using AI',
+    description: 'Deep learning model for breast cancer risk prediction using multi-view mammography with self-attention modules for CC and MLO views and RAD-DINO features.',
     image: '/projects/mammography.jpg',
-    tags: ['PyTorch', 'Medical AI', 'Attention', 'DICOM'],
+    tags: ['PyTorch', 'Medical AI', 'ViT', 'DICOM'],
     category: ['ml', 'cv'],
-    github: 'https://github.com',
+    github: '',
     icon: <Brain className="w-5 h-5" />,
+    date: 'Jan 2025 - Present',
+    featured: false,
+  },
+  {
+    title: 'Medical Image Classification with Limited Data (Few-Shot Learning)',
+    description: 'Data-efficient abnormality detection on CheXpert using few-shot + transfer learning with ResNet-18, DenseNet-121, and RAD-DINO. Achieved 50.5% accuracy in 10-shot settings.',
+    image: '/projects/chexpert-fewshot.jpg',
+    tags: ['PyTorch', 'Few-Shot Learning', 'ViT', 'RAD-DINO', 'Prototypical Networks'],
+    category: ['ml', 'cv'],
+    github: 'https://github.com/rohitnanjundareddy/advancedML',
+    demo: '',
+    icon: <Activity className="w-5 h-5" />,
+    date: 'Aug 2024 - Dec 2024',
+    featured: true,
+  },
+  {
+    title: 'InsureEase',
+    description: 'LLM-powered insurance document analysis system using RAG pipelines and knowledge graph to compare policies, extract insights, and generate personalized recommendations.',
+    image: '/projects/insure-ease.jpg',
+    tags: ['RAG', 'Vector DBs', 'Neo4j', 'LLMs', 'Sentence Transformers'],
+    category: ['web', 'ml'],
+    github: 'https://github.com/rohitnanjundareddy/InsuranceMarketplace',
+    demo: 'https://insure-ease-kappa.vercel.app',
+    icon: <FileText className="w-5 h-5" />,
+    date: 'Jan 2025 - May 2025',
+    featured: true,
+  },
+  {
+    title: 'Intelligent Wumpus World Agent',
+    description: 'LLM-driven reasoning agent using structured knowledge graph for environment understanding. Implemented belief-state search (POMDP-style) and LLM-based action planning, scoring 550/1000.',
+    image: '/projects/wumpus-agent.jpg',
+    tags: ['POMDP', 'Knowledge Graphs', 'LLM Reasoning', 'Planning'],
+    category: ['ml'],
+    github: 'https://github.com/rohitnanjundareddy/llm_wumpus',
+    demo: '',
+    icon: <Bot className="w-5 h-5" />,
+    date: 'Jan 2025 - May 2025',
+    featured: true,
+  },
+  {
+    title: 'Building LLM from Scratch',
+    description: 'End-to-end LLM training workflow on Amazon EMR/Hadoop with Spark sliding-window text generator. Built conversational agent integrating Bedrock + Ollama via AWS Lambda and gRPC.',
+    image: '/projects/llm-from-scratch.jpg',
+    tags: ['AWS EMR', 'Spark', 'Lambda', 'gRPC', 'Ollama', 'Bedrock'],
+    category: ['ml', 'web'],
+    github: '',
+    demo: '',
+    icon: <Brain className="w-5 h-5" />,
+    date: 'Aug 2024 - Dec 2024',
+    featured: true,
   },
   {
     title: 'RAD-DINO Feature Extraction',
     description: 'Medical imaging pipeline using RAD-DINO foundation model for feature extraction and transfer learning on mammography datasets.',
     image: '/projects/rad-dino.jpg',
-    tags: ['Foundation Models', 'Transfer Learning', 'VinDR-Mammo'],
+    tags: ['Foundation Models (RAD-DINO)', 'Transfer Learning', 'VinDR-Mammo'],
     category: ['ml', 'cv'],
-    github: 'https://github.com',
+    github: '',
     icon: <Eye className="w-5 h-5" />,
+    date: 'Sep 2024 - Dec 2024',
+    featured: false,
   },
   {
     title: 'Misty II Tour Guide Robot',
@@ -54,119 +119,75 @@ const projects: Project[] = [
     image: '/projects/misty.jpg',
     tags: ['Robotics', 'Speech Recognition', 'Navigation', 'HRI'],
     category: ['robotics'],
-    github: 'https://github.com',
+    github: 'https://github.com/rohitnanjundareddy/campus_guide_robot',
     icon: <Bot className="w-5 h-5" />,
-  },
-  {
-    title: 'Wumpus World RL Agent',
-    description: 'Hybrid architecture combining rule-based logic with Deep Recurrent Q-Networks for intelligent agent navigation.',
-    image: '/projects/wumpus.jpg',
-    tags: ['Reinforcement Learning', 'DRQN', 'PyTorch'],
-    category: ['ml'],
-    github: 'https://github.com',
-    icon: <Brain className="w-5 h-5" />,
-  },
-  {
-    title: 'ML Production Systems',
-    description: 'Anomaly detection and routing algorithms deployed at scale using Docker, Kubernetes, and TypeScript.',
-    image: '/projects/production.jpg',
-    tags: ['Docker', 'Kubernetes', 'TypeScript', 'React'],
-    category: ['web', 'ml'],
-    github: 'https://github.com',
-    demo: 'https://demo.com',
-    icon: <Code className="w-5 h-5" />,
-  },
-  {
-    title: 'Building LLM from Scratch',
-    description: 'Developed an LLM pipeline on Amazon EMR/Hadoop and built a Spark sliding-window text generator. Also shipped a conversational agent integrating Bedrock + Ollama via AWS Lambda and gRPC for scalable interactions.',
-    image: '/projects/llm-from-scratch.jpg',
-    tags: ['AWS EMR', 'S3', 'Lambda', 'Hadoop', 'Apache Spark', 'gRPC', 'Ollama', 'Amazon Bedrock'],
-    category: ['ml', 'web'],
-    github: '',
-    demo: '',
-    icon: <Brain className="w-5 h-5" />,
-    date: 'August 2024',
+    date: 'Aug 2024 - Dec 2024',
+    featured: false,
   },
   {
     title: 'Boston Housing Price Prediction',
-    description: 'Designed and optimized a transformer-based (T5) model achieving 70.93% accuracy. Benchmarked Gradient Boosting and Random Forest—improving accuracy by 15% and reducing training time by 20%.',
+    description: 'Transformer-based (T5) model achieving 70.93% accuracy. Benchmarked Gradient Boosting and Random Forest—improving accuracy by 15% and reducing training time by 20%.',
     image: '/projects/boston-housing.jpg',
-    tags: ['Python', 'PyTorch', 'T5', 'Transformers', 'Gradient Boosting', 'Random Forest'],
+    tags: ['PyTorch', 'T5', 'Transformers', 'Gradient Boosting'],
     category: ['ml'],
-    github: '',
-    demo: '',
+    github: 'https://github.com/rohitnanjundareddy/Boston_house_price_prediction',
+    demo: 'https://bostonhousepriceprediction-murkum3ebg7d6ufuzthgmn.streamlit.app/',
     icon: <LineChart className="w-5 h-5" />,
-    date: 'November 2024',
+    date: 'Oct 2024 - Nov 2024',
+    featured: false,
   },
   {
     title: 'Diabetic Retinopathy Detection',
-    description: 'Built a deep learning model to classify retinopathy stages on 35,000 images, reaching 85% accuracy. Implemented image preprocessing that improved accuracy by 25% and flagged 90% of severe-risk cases correctly.',
+    description: 'Deep learning model to classify retinopathy stages on 35,000 images, reaching 85% accuracy. Image preprocessing improved accuracy by 25% and flagged 90% of severe-risk cases.',
     image: '/projects/retinopathy.jpg',
-    tags: ['OpenCV', 'Keras', 'TensorFlow', 'Computer Vision', 'Medical Imaging'],
+    tags: ['OpenCV', 'Keras', 'TensorFlow', 'Medical Imaging'],
     category: ['ml', 'cv'],
     github: '',
     demo: '',
     icon: <Eye className="w-5 h-5" />,
-    date: 'July 2019 - December 2019',
+    date: 'Jul 2019 - Dec 2019',
+    featured: false,
   },
   {
     title: 'Traffic Violation Model',
-    description: 'Built a real-time traffic violation detection system using YOLO + OpenCV with 95% detection accuracy for speeding and lane-crossing scenarios. Extracted vehicle numbers using image processing and unique identifiers.',
+    description: 'Real-time traffic violation detection using YOLO + OpenCV with 95% detection accuracy for speeding and lane-crossing scenarios.',
     image: '/projects/traffic-violation.jpg',
-    tags: ['OpenCV', 'YOLO', 'Real-time CV', 'Object Detection', 'Computer Vision'],
+    tags: ['OpenCV', 'YOLO', 'Object Detection', 'Real-time CV'],
     category: ['ml', 'cv'],
     github: '',
     demo: '',
     icon: <Car className="w-5 h-5" />,
-    date: 'November 2019',
+    date: 'Sep 2019 - Nov 2019',
+    featured: false,
   },
   {
-    title: 'Sentiment Analysis Model',
-    description: 'Developed NLP sentiment classification models (SVM + neural network) achieving 90% accuracy. Improved word-level performance using LSTM and Naive Bayes for robust sentiment prediction.',
+    title: 'Sentiment Analysis Engine',
+    description: 'NLP sentiment classification models (SVM + neural network) achieving 90% accuracy. Used LSTM and Naive Bayes for robust sentiment prediction.',
     image: '/projects/sentiment-analysis.jpg',
-    tags: ['PyTorch', 'Keras', 'LSTM', 'NLP', 'SVM', 'Naive Bayes'],
+    tags: ['PyTorch', 'LSTM', 'NLP', 'SVM'],
     category: ['ml', 'web'],
     github: '',
     demo: '',
     icon: <MessageSquare className="w-5 h-5" />,
-    date: 'Jan 2019 - April 2019',
+    date: 'Jan 2019 - Apr 2019',
+    featured: false,
   },
   {
-    title: 'Few-Shot & Transfer Learning for Medical Imaging',
-    description: 'Built a data-efficient abnormality detection pipeline on CheXpert using few-shot + transfer learning with ResNet-18, DenseNet-121, and a medical-domain ViT (RAD-DINO). Used Prototypical Networks and diffusion-based augmentation.',
-    image: '/projects/chexpert-fewshot.jpg',
-    tags: ['PyTorch', 'CheXpert', 'Few-Shot Learning', 'Transfer Learning', 'ViT', 'RAD-DINO'],
-    category: ['ml', 'cv'],
-    github: '',
-    demo: '',
-    icon: <Activity className="w-5 h-5" />,
-    date: 'Aug - Dec 2025',
-  },
-  {
-    title: 'Intelligent Wumpus World Agent',
-    description: 'Built an LLM-driven reasoning agent using a structured knowledge graph for environment understanding. Implemented belief-state search (POMDP-style) and LLM-based action planning, scoring 550/1000.',
-    image: '/projects/wumpus-agent.jpg',
-    tags: ['POMDP', 'Knowledge Graphs', 'LLM Reasoning', 'Belief-State Search', 'Planning'],
-    category: ['ml'],
-    github: '',
-    demo: '',
-    icon: <Bot className="w-5 h-5" />,
-    date: 'Jan - May 2025',
-  },
-  {
-    title: 'InsureEase',
-    description: 'Developed an LLM-powered insurance document analysis system using RAG pipelines and a knowledge graph to compare policies, extract key insights, and generate personalized recommendations.',
-    image: '/projects/insure-ease.jpg',
-    tags: ['Sentence Transformers', 'RAG', 'Vector Databases', 'Neo4j', 'LLMs', 'Document AI'],
+    title: 'ML Production Infrastructure at 24/7.ai',
+    description: 'Anomaly detection and routing algorithms deployed at scale using Docker, Kubernetes, and TypeScript at 247.ai.',
+    image: '/projects/production.jpg',
+    tags: ['Docker', 'Kubernetes', 'TypeScript', 'React'],
     category: ['web', 'ml'],
     github: '',
-    demo: 'https://insure-ease-kappa.vercel.app',
-    icon: <FileText className="w-5 h-5" />,
-    date: 'Jan - May 2025',
+    demo: '',
+    icon: <Code className="w-5 h-5" />,
+    date: 'May 2023 - Aug 2024',
+    featured: false,
   },
 ]
 
 const categories = [
+  { id: 'featured' as ProjectCategory, label: 'Highlights' },
   { id: 'all' as ProjectCategory, label: 'All' },
   { id: 'ml' as ProjectCategory, label: 'Machine Learning' },
   { id: 'cv' as ProjectCategory, label: 'Computer Vision' },
@@ -175,11 +196,13 @@ const categories = [
 ]
 
 export default function Projects() {
-  const [activeCategory, setActiveCategory] = useState<ProjectCategory>('all')
+  const [activeCategory, setActiveCategory] = useState<ProjectCategory>('featured')
 
-  const filteredProjects = projects.filter(
-    (project) => activeCategory === 'all' || project.category.includes(activeCategory)
-  )
+  const filteredProjects = projects.filter((project) => {
+    if (activeCategory === 'featured') return project.featured
+    if (activeCategory === 'all') return true
+    return project.category.includes(activeCategory)
+  })
 
   return (
     <section id="projects" className="py-24 relative">
@@ -228,13 +251,30 @@ export default function Projects() {
                   </div>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                
+                {/* Featured badge */}
+                {project.featured && (
+                  <div className="absolute top-3 right-3">
+                    <span className="px-2 py-1 text-xs font-medium bg-indigo-500/20 text-indigo-300 rounded-full border border-indigo-500/30">
+                      ★ Highlight
+                    </span>
+                  </div>
+                )}
               </div>
 
               {/* Project Content */}
               <div className="p-6 space-y-4">
-                <h3 className="text-xl font-semibold group-hover:text-indigo-400 transition-colors">
-                  {project.title}
-                </h3>
+                <div>
+                  <h3 className="text-xl font-semibold group-hover:text-indigo-400 transition-colors">
+                    {project.title}
+                  </h3>
+                  {/* Date */}
+                  <div className="flex items-center gap-1.5 mt-1 text-gray-500 text-sm">
+                    <Calendar size={14} />
+                    <span>{project.date}</span>
+                  </div>
+                </div>
+                
                 <p className="text-gray-400 text-sm leading-relaxed">
                   {project.description}
                 </p>

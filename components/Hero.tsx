@@ -32,12 +32,12 @@ export default function Hero() {
                 <span className="gradient-text">Rohit Nanjundareddy</span>
               </h1>
               <h2 className="font-display text-2xl md:text-3xl text-text-secondary font-medium opacity-0 animate-slide-up animation-delay-200">
-                ML Researcher & Engineer
+                AI/ML Engineer
               </h2>
             </div>
 
             <p className="text-text-secondary text-lg leading-relaxed max-w-lg opacity-0 animate-slide-up animation-delay-300">
-              Graduate Research Assistant at UIC building medical AI for breast cancer risk prediction from mammograms. Previously shipped production ML systems at 24/7.ai, from anomaly detection to recommendation workflows.
+              5+ years building production ML and LLM systems — from CLIP-based real-time monitoring and GPT-powered RAG pipelines to multi-agent forecasting systems. MS CS at UIC, previously Senior Data Scientist at 24/7.ai.
             </p>
 
             {/* CTA Buttons */}
@@ -112,7 +112,7 @@ export default function Hero() {
                 <span className="text-sm font-medium">🎓 UIC</span>
               </div>
               <div className="absolute -bottom-4 -left-4 px-4 py-2 bg-surface border border-border rounded-lg shadow-xl animate-float animation-delay-200">
-                <span className="text-sm font-medium">🧠 Medical AI</span>
+                <span className="text-sm font-medium">🤖 LLM Systems</span>
               </div>
             </div>
           </div>

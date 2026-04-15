@@ -1,6 +1,6 @@
 import { 
   Brain, 
-  Eye, 
+  MessageSquare,
   Database, 
   Code, 
   Wrench,
@@ -21,81 +21,81 @@ const skillCategories: SkillCategory[] = [
       'PyTorch',
       'TensorFlow',
       'Scikit-learn',
-      'Deep Learning',
-      'Reinforcement Learning',
-      'Meta-Learning',
+      'XGBoost',
+      'LightGBM',
+      'TabNet',
+      'Feature Engineering',
+      'Model Evaluation',
+    ],
+  },
+  {
+    title: 'Deep Learning',
+    icon: <Brain className="w-5 h-5" />,
+    skills: [
+      'CNN',
+      'RNN/LSTM/BiLSTM',
+      'Transformers (ViT, TFT)',
       'Attention Mechanisms',
       'Transfer Learning',
+      'Reinforcement Learning',
+      'Diffusion Models',
+      'Meta-Learning',
     ],
   },
   {
-    title: 'Computer Vision',
-    icon: <Eye className="w-5 h-5" />,
+    title: 'LLMs & AI Systems',
+    icon: <MessageSquare className="w-5 h-5" />,
     skills: [
-      'Medical Imaging',
-      'DICOM Processing',
-      'Image Classification',
-      'Object Detection',
-      'Feature Extraction',
-      'OpenCV',
-      'Mammography Analysis',
-      'Foundation Models',
+      'LangChain',
+      'LangGraph',
+      'RAG Pipelines',
+      'Prompt Engineering',
+      'Vector DBs (Pinecone)',
+      'Knowledge Graphs',
+      'Agent Workflows',
+      'LLM Evaluation',
     ],
   },
   {
-    title: 'Data & Databases',
+    title: 'Production & MLOps',
+    icon: <Wrench className="w-5 h-5" />,
+    skills: [
+      'Kubernetes',
+      'Docker',
+      'Spark',
+      'Airflow',
+      'Kafka',
+      'Apache Beam',
+      'MLflow',
+      'CI/CD',
+    ],
+  },
+  {
+    title: 'Data & Storage',
     icon: <Database className="w-5 h-5" />,
     skills: [
-      'Python',
-      'Pandas',
-      'NumPy',
-      'SQL',
       'PostgreSQL',
+      'BigQuery',
       'MongoDB',
-      'Data Pipelines',
-      'Jupyter',
+      'DynamoDB',
+      'Redis',
+      'Pinecone',
+      'Neo4j',
+      'Cassandra',
     ],
   },
   {
-    title: 'Programming',
+    title: 'Programming & Cloud',
     icon: <Code className="w-5 h-5" />,
     skills: [
       'Python',
-      'TypeScript',
-      'JavaScript',
+      'SQL',
       'C++',
       'Java',
-      'React',
-      'Node.js',
-      'REST APIs',
-    ],
-  },
-  {
-    title: 'Cloud & DevOps',
-    icon: <Cloud className="w-5 h-5" />,
-    skills: [
-      'Docker',
-      'Kubernetes',
-      'AWS',
-      'GCP',
-      'CI/CD',
-      'Linux',
-      'Git',
-      'MLOps',
-    ],
-  },
-  {
-    title: 'Tools & Practices',
-    icon: <Wrench className="w-5 h-5" />,
-    skills: [
-      'VS Code',
-      'Weights & Biases',
-      'Hugging Face',
-      'Agile/Scrum',
-      'Research Methods',
-      'Technical Writing',
-      'Code Review',
-      'Testing',
+      'JavaScript',
+      'FastAPI',
+      'gRPC',
+      'AWS / GCP',
     ],
   },
 ]
@@ -110,8 +110,8 @@ export default function Skills() {
             Skills & <span className="gradient-text">Technologies</span>
           </h2>
           <p className="text-text-secondary text-lg max-w-2xl mx-auto">
-            Technical expertise spanning machine learning research, production systems, 
-            and full-stack development.
+            Technical expertise spanning production ML systems, LLM pipelines, 
+            and end-to-end AI infrastructure.
           </p>
         </div>
 
@@ -152,7 +152,7 @@ export default function Skills() {
         <div className="mt-12 p-6 bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 rounded-xl text-center">
           <p className="text-text-secondary">
             <span className="text-text-primary font-medium">Currently exploring:</span>{' '}
-            Vision Transformers, Diffusion Models, Multi-modal Learning, and LLM Applications in Healthcare
+            Multi-Agent Systems, Temporal Fusion Transformers, LLM Evaluation Frameworks, and Production RAG Architectures
           </p>
         </div>
       </div>

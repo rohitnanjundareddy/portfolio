@@ -4,17 +4,17 @@ import Link from 'next/link'
 const socialLinks = [
   {
     icon: <Github size={18} />,
-    href: 'https://github.com/yourusername',
+    href: 'https://github.com/rohitnanjundareddy',
     label: 'GitHub',
   },
   {
     icon: <Linkedin size={18} />,
-    href: 'https://linkedin.com/in/yourusername',
+    href: 'https://linkedin.com/in/rohit-nanjundareddy',
     label: 'LinkedIn',
   },
   {
     icon: <Mail size={18} />,
-    href: 'mailto:your@email.com',
+    href: 'mailto:rohitnanjundareddy@gmail.com',
     label: 'Email',
   },
 ]
@@ -43,7 +43,7 @@ export default function Footer() {
               <span className="gradient-text">RO</span>
             </Link>
             <p className="text-text-secondary text-sm">
-              ML Researcher & Engineer
+              AI/ML Engineer
             </p>
           </div>
 

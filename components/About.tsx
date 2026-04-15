@@ -8,8 +8,8 @@ const highlights = [
   },
   {
     icon: <Building2 className="w-5 h-5" />,
-    label: 'Lab',
-    value: "Radiology AI Research Lab",
+    label: 'Research',
+    value: 'AI & NLP Research, UIC',
   },
   {
     icon: <Briefcase className="w-5 h-5" />,
@@ -36,11 +36,10 @@ export default function About() {
               
               {/* Main image container */}
               <div className="relative w-full h-full rounded-2xl overflow-hidden border border-border bg-surface">
-                {/* Placeholder */}
                 <div className="w-full h-full bg-gradient-to-br from-surface-light to-surface flex items-center justify-center">
                   <div className="text-center space-y-4">
                     <span className="font-display text-6xl font-bold gradient-text">ROHIT NANJUNDA REDDY</span>
-                    <p className="text-text-muted text-sm">ML Researcher</p>
+                    <p className="text-text-muted text-sm">AI/ML Engineer</p>
                   </div>
                 </div>
               </div>
@@ -60,22 +59,30 @@ export default function About() {
               
               <div className="space-y-4 text-text-secondary leading-relaxed">
                 <p>
-                  I&apos;m a Graduate Research Assistant at UIC, working in Radiology AI Research Labb 
-                  on cutting-edge medical AI research. My focus is developing deep learning 
-                  models for breast cancer risk prediction using mammography images.
+                  I&apos;m an AI/ML Engineer with 5+ years of experience building and deploying
+                  production machine learning systems at scale. Currently pursuing my MS in
+                  Computer Science at UIC while working as a Graduate Research Assistant
+                  on NLP and deep learning research.
                 </p>
                 <p>
-                  My work spans computer vision applications in healthcare, including 
-                  RAD-DINO (a medical imaging foundation model), multi-view mammogram 
-                  analysis, and DICOM image processing pipelines. I&apos;m passionate about 
-                  building AI systems that can make a real difference in healthcare outcomes.
+                  At 24/7.ai, I designed and deployed a CLIP-based real-time screen compliance
+                  monitoring system using zero-shot visual understanding, built a GPT-powered
+                  RAG agent assistance system that improved first-call resolution by 25%, and
+                  engineered multimodal ETL pipelines with Apache Beam and Spark processing
+                  live chat, voice, and document data at sub-ms latency — all dynamically
+                  scaled via Kubernetes and Docker.
                 </p>
                 <p>
-                  Beyond research, I have production ML experience from my time as a 
-                  Senior Data Scientist at 247.ai, where I shipped models into real workflows, including a ResNet-based anomaly and misuse detection system that reduced QA review time by 40% and a chat-routing recommendation engine that improved first-call resolution by 25%. I also built NLP and speech models (CNN, BiLSTM), workforce forecasting using gradient boosting and time-series methods, and dashboards in React and TypeScript.
+                  My research work spans NLP pipelines, ViT-based classification models with
+                  diffusion-based augmentation, and distributed transformer embedding pipelines
+                  processing 100k+ data points. I also build LLM-powered applications — from
+                  multi-agent RAG systems for real-time stock forecasting to knowledge
+                  graph-based document analyzers.
                 </p>
                 <p>
-                  I like owning projects end to end, from cleaning data and training models to deploying, monitoring, and improving them, using tools like Python, PyTorch, Docker, Kubernetes, and Spark to build systems people can actually rely on.
+                  I like owning projects end to end — from data pipelines and model training
+                  to deployment, monitoring, and governance — using Python, PyTorch, Docker,
+                  Kubernetes, Spark, and cloud platforms to build systems people can rely on.
                 </p>
               </div>
             </div>
@@ -100,21 +107,21 @@ export default function About() {
               ))}
             </div>
 
-            {/* Research Interests */}
+            {/* Focus Areas */}
             <div>
               <h3 className="font-display text-lg font-semibold mb-3 text-text-primary">
-                Research Interests
+                Focus Areas
               </h3>
               <div className="flex flex-wrap gap-2">
                 {[
-                  'Medical AI',
-                  'Computer Vision',
+                  'Production ML Systems',
+                  'LLM & RAG Pipelines',
+                  'Multi-Agent Systems',
                   'Deep Learning',
-                  'Attention Mechanisms',
-                  'Transfer Learning',
-                  'Meta-Learning',
+                  'Computer Vision',
+                  'NLP',
+                  'MLOps & Infrastructure',
                   'Reinforcement Learning',
-                  'Human-Robot Interaction',
                 ].map((interest) => (
                   <span
                     key={interest}
