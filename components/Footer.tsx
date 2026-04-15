@@ -43,7 +43,7 @@ export default function Footer() {
               <span className="gradient-text">RO</span>
             </Link>
             <p className="text-text-secondary text-sm">
-              AI/ML Engineer
+              Senior Data Scientist | AI/ML Engineer
             </p>
           </div>
 

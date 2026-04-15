@@ -32,12 +32,12 @@ export default function Hero() {
                 <span className="gradient-text">Rohit Nanjundareddy</span>
               </h1>
               <h2 className="font-display text-2xl md:text-3xl text-text-secondary font-medium opacity-0 animate-slide-up animation-delay-200">
-                AI/ML Engineer
+                Senior Data Scientist 
               </h2>
             </div>
 
             <p className="text-text-secondary text-lg leading-relaxed max-w-lg opacity-0 animate-slide-up animation-delay-300">
-              5+ years building production ML and LLM systems — from CLIP-based real-time monitoring and GPT-powered RAG pipelines to multi-agent forecasting systems. MS CS at UIC, previously Senior Data Scientist at 24/7.ai.
+              5+ years building production ML and AI systems across NLP, computer vision, and multimodal applications, including real-time monitoring, RAG pipelines, and large-scale ETL systems.
             </p>
 
             {/* CTA Buttons */}

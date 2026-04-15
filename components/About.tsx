@@ -59,31 +59,15 @@ export default function About() {
               
               <div className="space-y-4 text-text-secondary leading-relaxed">
                 <p>
-                  I&apos;m an AI/ML Engineer with 5+ years of experience building and deploying
-                  production machine learning systems at scale. Currently pursuing my MS in
-                  Computer Science at UIC while working as a Graduate Research Assistant
-                  on NLP and deep learning research.
+                  I&apos;m AI/ML Engineer and Data Scientist with 5+ years of experience building and deploying scalable machine learning systems across NLP, computer vision, and multimodal applications. Currently, I work as a Graduate Research Assistant at UIC, where I develop transformer-based and Vision Transformer (ViT) models for cancer risk prediction and large-scale histopathology analysis.
                 </p>
                 <p>
-                  At 24/7.ai, I designed and deployed a CLIP-based real-time screen compliance
-                  monitoring system using zero-shot visual understanding, built a GPT-powered
-                  RAG agent assistance system that improved first-call resolution by 25%, and
-                  engineered multimodal ETL pipelines with Apache Beam and Spark processing
-                  live chat, voice, and document data at sub-ms latency — all dynamically
-                  scaled via Kubernetes and Docker.
+                  I’ve built and deployed production systems including CLIP-based real-time monitoring solutions that reduced QA effort by 40% and GPT-powered RAG pipelines that improved first-call resolution by 25%. I have also developed sentiment and speech models, anomaly detection systems, and scalable data pipelines processing chat, voice, and document data in real time.
                 </p>
                 <p>
-                  My research work spans NLP pipelines, ViT-based classification models with
-                  diffusion-based augmentation, and distributed transformer embedding pipelines
-                  processing 100k+ data points. I also build LLM-powered applications — from
-                  multi-agent RAG systems for real-time stock forecasting to knowledge
-                  graph-based document analyzers.
+                  I enjoy building end-to-end ML systems, from data pipelines and model development to deployment and monitoring using tools like PyTorch, TensorFlow, Transformers, Spark, Docker, and Kubernetes. I learn new tools quickly, adapt well to changing needs, and I’m particularly interested in solving complex problems and applying AI to build reliable, real-world systems at scale.
                 </p>
-                <p>
-                  I like owning projects end to end — from data pipelines and model training
-                  to deployment, monitoring, and governance — using Python, PyTorch, Docker,
-                  Kubernetes, Spark, and cloud platforms to build systems people can rely on.
-                </p>
+                
               </div>
             </div>
 
