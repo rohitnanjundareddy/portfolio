@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rohit Nanjundareddy · Software &amp; ML Engineer</title>
+<meta name="description" content="Software &amp; ML engineer building production ML, LLM, and multi-agent systems across NLP, computer vision, and multimodal data. 5+ years from research lab to production." />
+<meta name="keywords" content="Rohit Nanjundareddy, AI Engineer, ML Engineer, LLM, Multi-Agent Systems, RAG, Deep Learning, MLOps, University of Illinois Chicago" />
+<meta name="author" content="Rohit Nanjundareddy" />
+<meta property="og:title" content="Rohit Nanjundareddy · Software &amp; ML Engineer" />
+<meta property="og:description" content="I don't stop at a working model. I ship the system around it." />
+<meta property="og:type" content="profile" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  /* ================= THEME TOKENS ================= */
+  :root[data-theme="dark"] {
+    --bg:          #0C0D11;
+    --bg-soft:     #131419;
+    --text:        #ECEDEA;
+    --muted:       #8A909C;
+    --faint:       #5A606C;
+    --line:        #22242D;
+    --line-strong: #333744;
+    --accent:      #93A4FF;
+    --accent-ink:  #0C0D11;
+    --tag-bg:      #15161C;
+  }
+  :root[data-theme="light"] {
+    --bg:          #F4F3EF;
+    --bg-soft:     #FBFBF8;
+    --text:        #16181D;
+    --muted:       #5C616E;
+    --faint:       #8A8F9A;
+    --line:        #DEDCD4;
+    --line-strong: #C6C4BB;
+    --accent:      #3946B0;
+    --accent-ink:  #FFFFFF;
+    --tag-bg:      #ECEAE3;
+  }
+
+  :root {
+    --serif: 'Newsreader', Georgia, serif;
+    --sans:  'Inter', system-ui, sans-serif;
+    --mono:  'JetBrains Mono', ui-monospace, monospace;
+    --maxw:  1080px;
+    --pad-x: clamp(22px, 6vw, 80px);
+    --sec-y: clamp(72px, 10vh, 128px);
+    --nav-h: 66px;
+    --ease:  cubic-bezier(.22,.61,.36,1);
+  }
+
+  /* ================= RESET ================= */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: var(--sans); font-size: 16px; line-height: 1.62; font-weight: 400;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    transition: background .4s var(--ease), color .4s var(--ease);
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+  ::selection { background: var(--accent); color: var(--accent-ink); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  em { font-style: italic; }
+
+  .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding-inline: var(--pad-x); }
+  section { padding-block: var(--sec-y); position: relative; scroll-margin-top: var(--nav-h); border-top: 1px solid var(--line); }
+
+  /* ================= ARROW LINKS ================= */
+  .alink {
+    font-family: var(--mono); font-size: 13.5px; color: var(--text);
+    display: inline-flex; align-items: baseline; gap: 2px; position: relative; padding-bottom: 2px;
+    transition: color .2s;
+  }
+  .alink .arr { color: var(--accent); display: inline-block; }
+  .alink::after { content:""; position: absolute; left: 0; bottom: 0; height: 1px; width: 100%; background: var(--line); }
+  .alink:hover { color: var(--accent); }
+  .alink:hover::after { background: var(--accent); }
+
+  /* ================= NAV ================= */
+  .nav {
+    position: fixed; inset: 0 0 auto 0; height: var(--nav-h); z-index: 100; display: flex; align-items: center;
+    background: color-mix(in srgb, var(--bg) 78%, transparent);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid transparent; transition: border-color .3s, background .3s;
+  }
+  .nav.scrolled { border-bottom-color: var(--line); }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .logo { font-family: var(--serif); font-size: 22px; font-weight: 500; letter-spacing: -.01em; }
+  .logo span { color: var(--accent); }
+  .nav-mid { display: flex; align-items: center; gap: 26px; }
+  .nav-mid a { font-family: var(--mono); font-size: 13px; color: var(--muted); transition: color .2s; position: relative; }
+  .nav-mid a:hover, .nav-mid a.active { color: var(--text); }
+  .nav-mid a.active::before { content:"·"; color: var(--accent); position: absolute; left: -10px; }
+  .nav-right { display: flex; align-items: center; gap: 18px; }
+  .theme-btn { width: 36px; height: 36px; border: 1px solid var(--line-strong); border-radius: 2px; display: grid; place-items: center; color: var(--text); transition: border-color .2s, background .2s; }
+  .theme-btn:hover { border-color: var(--accent); }
+  .theme-btn svg { width: 17px; height: 17px; }
+  .theme-btn .moon { display: none; } :root[data-theme="dark"] .theme-btn .moon { display: block; } :root[data-theme="dark"] .theme-btn .sun { display: none; }
+  .menu-btn { display: none; width: 34px; height: 34px; position: relative; }
+  .menu-btn span { position: absolute; left: 6px; right: 6px; height: 1.5px; background: var(--text); transition: .3s; }
+  .menu-btn span:nth-child(1){ top: 12px;} .menu-btn span:nth-child(2){ top: 17px;} .menu-btn span:nth-child(3){ top: 22px;}
+  .menu-btn.open span:nth-child(1){ top:17px; transform: rotate(45deg);} .menu-btn.open span:nth-child(2){ opacity:0;} .menu-btn.open span:nth-child(3){ top:17px; transform: rotate(-45deg);}
+
+  /* ================= HERO ================= */
+  .hero { min-height: 100svh; display: flex; align-items: center; padding-top: var(--nav-h); border-top: none; }
+  .hero .eyebrow {
+    font-family: var(--mono); font-size: 13px; color: var(--muted); letter-spacing: .02em;
+    margin-bottom: 30px; display: inline-flex; align-items: center; gap: 10px;
+  }
+  .hero .eyebrow b { color: var(--accent); font-weight: 500; }
+  .hero h1 {
+    font-family: var(--serif); font-weight: 400; line-height: .94; letter-spacing: -.025em;
+    font-size: clamp(52px, 12vw, 132px); margin-bottom: 22px;
+  }
+  .hero h1 em { color: var(--text); }
+  .hero .role { font-family: var(--mono); font-size: clamp(13px,1.6vw,16px); color: var(--accent); letter-spacing: .04em; margin-bottom: 36px; }
+  .thesis {
+    font-family: var(--serif); font-size: clamp(22px,3.4vw,36px); line-height: 1.18; letter-spacing: -.01em;
+    max-width: 22ch; margin-bottom: 26px; font-weight: 300;
+  }
+  .thesis em { color: var(--accent); }
+  .hero .lede { color: var(--muted); max-width: 56ch; font-size: 17px; margin-bottom: 44px; }
+  .hero-links { display: flex; flex-wrap: wrap; gap: 26px; }
+
+  /* ================= SECTION HEADER ================= */
+  .shead { display: grid; grid-template-columns: auto 1fr; gap: 0 22px; align-items: baseline; margin-bottom: 56px; }
+  .shead .num { font-family: var(--mono); font-size: 13px; color: var(--accent); grid-row: 1; }
+  .shead .rule { grid-column: 1 / -1; height: 1px; background: var(--line); margin: 14px 0 22px; }
+  .shead h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(30px,5vw,52px); letter-spacing: -.02em; line-height: 1; grid-column: 2; }
+  .shead .tag { font-family: var(--mono); font-size: 13px; color: var(--muted); grid-column: 2; margin-top: 12px; letter-spacing: .01em; }
+
+  /* ================= ABOUT ================= */
+  .about-grid { display: grid; grid-template-columns: 1.5fr .85fr; gap: clamp(34px,6vw,80px); align-items: start; }
+  .about-prose p { font-size: 18px; color: var(--text); margin-bottom: 22px; max-width: 60ch; }
+  .about-prose p.dim { color: var(--muted); }
+  .about-prose em { color: var(--accent); font-style: italic; }
+  .meta-dl { display: grid; gap: 0; }
+  .meta-dl .row { display: grid; grid-template-columns: 92px 1fr; gap: 14px; padding: 15px 0; border-top: 1px solid var(--line); }
+  .meta-dl .row:last-child { border-bottom: 1px solid var(--line); }
+  .meta-dl dt { font-family: var(--mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); padding-top: 3px; }
+  .meta-dl dd { font-size: 15px; color: var(--text); }
+
+  /* ================= EXPERIENCE ================= */
+  .xp { display: grid; grid-template-columns: 200px 1fr; gap: clamp(20px,4vw,52px); padding: 38px 0; border-top: 1px solid var(--line); }
+  .xp:first-of-type { border-top: none; padding-top: 0; }
+  .xp-meta { font-family: var(--mono); font-size: 12.5px; color: var(--muted); line-height: 1.9; }
+  .xp-meta .loc { color: var(--faint); display: block; }
+  .xp h3 { font-family: var(--serif); font-weight: 500; font-size: 22px; letter-spacing: -.01em; line-height: 1.2; }
+  .xp h3 span { color: var(--accent); }
+  .xp ul { list-style: none; margin-top: 16px; display: grid; gap: 11px; }
+  .xp li { position: relative; padding-left: 22px; color: var(--muted); font-size: 15px; max-width: 70ch; }
+  .xp li::before { content:"\00B7"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+  .xp li b { color: var(--text); font-weight: 600; }
+
+  /* ================= PROJECTS ================= */
+  .proj { display: grid; grid-template-columns: 60px 1fr; gap: clamp(16px,3vw,40px); padding: 42px 0; border-top: 1px solid var(--line); }
+  .proj:first-of-type { border-top: none; padding-top: 0; }
+  .proj .pn { font-family: var(--mono); font-size: 13px; color: var(--faint); padding-top: 8px; }
+  .proj h3 { font-family: var(--serif); font-weight: 500; font-size: clamp(22px,3vw,30px); letter-spacing: -.015em; line-height: 1.1; }
+  .proj h3 a { transition: color .2s; }
+  .proj h3 a:hover { color: var(--accent); }
+  .proj h3 a .arr { color: var(--accent); font-size: .7em; vertical-align: super; }
+  .proj .ptag { font-family: var(--serif); font-style: italic; font-size: 19px; color: var(--muted); margin: 8px 0 16px; }
+  .proj p { color: var(--muted); font-size: 15.5px; max-width: 68ch; margin-bottom: 18px; }
+  .proj p b { color: var(--text); font-weight: 600; }
+  .stack { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .stack span { font-family: var(--mono); font-size: 11.5px; color: var(--muted); background: var(--tag-bg); border: 1px solid var(--line); padding: 4px 10px; }
+  .proj .plinks { display: flex; gap: 22px; }
+  .badge { font-family: var(--mono); font-size: 11px; color: var(--accent); border: 1px solid var(--accent); padding: 2px 8px; margin-left: 10px; vertical-align: middle; letter-spacing: .04em; }
+  #moreProjects { display: none; }
+  #moreProjects.show { display: block; }
+  #moreProjects .proj:first-of-type { border-top: 1px solid var(--line); padding-top: 42px; }
+  .proj-toggle { margin-top: 42px; padding-top: 28px; border-top: 1px solid var(--line); display: flex; }
+  .proj-toggle button { font-family: var(--mono); font-size: 14px; color: var(--text); display: inline-flex; align-items: center; gap: 9px; transition: color .2s; }
+  .proj-toggle button .arr { color: var(--accent); transition: transform .3s var(--ease); display: inline-block; }
+  .proj-toggle button:hover { color: var(--accent); }
+  .proj-toggle button.open .arr { transform: rotate(180deg); }
+
+  /* ================= SKILLS / STACK ================= */
+  .stack-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 30px 40px; margin-bottom: 60px; }
+  .scat h4 { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; color: var(--accent); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+  .scat .items { display: flex; flex-wrap: wrap; gap: 7px 12px; }
+  .scat .items span { font-size: 14px; color: var(--text); }
+  .scat .items span::after { content:"·"; color: var(--faint); margin-left: 12px; }
+  .scat .items span:last-child::after { content:""; margin: 0; }
+
+  .bg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(30px,5vw,64px); padding-top: 50px; border-top: 1px solid var(--line); }
+  .bg-block h4 { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; color: var(--accent); margin-bottom: 20px; }
+  .edu { padding: 16px 0; border-top: 1px solid var(--line); }
+  .edu:first-of-type { border-top: none; padding-top: 0; }
+  .edu .when { font-family: var(--mono); font-size: 11.5px; color: var(--faint); }
+  .edu h5 { font-family: var(--serif); font-weight: 500; font-size: 18px; margin: 4px 0 2px; }
+  .edu p { color: var(--muted); font-size: 14px; }
+  .edu p b { color: var(--text); font-weight: 500; }
+  .hl { list-style: none; display: grid; gap: 12px; }
+  .hl li { position: relative; padding-left: 24px; color: var(--text); font-size: 15px; }
+  .hl li::before { content:"›"; position: absolute; left: 0; color: var(--accent); font-family: var(--mono); }
+  .hl li b { color: var(--accent); font-weight: 600; }
+
+  /* ================= CONTACT ================= */
+  #contact { text-align: left; }
+  .contact-big { font-family: var(--serif); font-weight: 300; font-size: clamp(40px,9vw,104px); line-height: .98; letter-spacing: -.03em; display: inline-block; transition: color .2s; margin-bottom: 44px; }
+  .contact-big em { color: var(--accent); }
+  .contact-big:hover { color: var(--accent); }
+  .contact-links { display: flex; flex-wrap: wrap; gap: 26px; margin-bottom: 36px; }
+  .contact-email { font-family: var(--mono); font-size: 14px; color: var(--muted); }
+
+  /* ================= FOOTER ================= */
+  footer { border-top: 1px solid var(--line); padding-block: 34px; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; }
+  footer .c { font-family: var(--mono); font-size: 12px; color: var(--faint); }
+  footer .built { font-family: var(--mono); font-size: 12px; color: var(--faint); }
+
+  /* ================= REVEAL ================= */
+  .rv { opacity: 1; transform: none; }
+
+  /* ================= RESPONSIVE ================= */
+  @media (max-width: 880px) {
+    .about-grid, .bg-grid { grid-template-columns: 1fr; }
+    .stack-grid { grid-template-columns: 1fr 1fr; }
+    .xp { grid-template-columns: 1fr; gap: 10px; }
+    .xp-meta { display: flex; gap: 14px; }
+    .xp-meta .loc { display: inline; color: var(--faint); }
+  }
+  @media (max-width: 620px) {
+    .nav-mid { position: fixed; inset: var(--nav-h) 0 auto 0; flex-direction: column; gap: 0; align-items: stretch;
+      background: var(--bg-soft); border-bottom: 1px solid var(--line); padding: 6px 0;
+      transform: translateY(-130%); transition: transform .35s var(--ease); }
+    .nav-mid.open { transform: none; }
+    .nav-mid a { padding: 13px var(--pad-x); }
+    .nav-mid a.active::before { display: none; }
+    .menu-btn { display: block; }
+    .stack-grid { grid-template-columns: 1fr; }
+    .proj { grid-template-columns: 1fr; gap: 6px; }
+    .proj .pn { padding-top: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration:.001ms!important; transition-duration:.001ms!important; scroll-behavior:auto!important; }
+    .rv { opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo">RN<span>.</span></a>
+    <div class="nav-mid" id="navMid">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Stack</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <a href="public/resume.pdf" class="alink" target="_blank" rel="noopener">Résumé<span class="arr arr-dn">↓</span></a>
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 109.8 9.8z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8"/></svg>
+      </button>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow">San Francisco, CA · <b>Open to Software / ML engineering roles</b></div>
+    <h1>Rohit <em>Nanjundareddy</em></h1>
+    <p class="role">Software &amp; ML Engineer · LLM &amp; Multi-Agent Systems</p>
+    <p class="thesis">I don't stop at a working model. I ship the <em>system</em> around it.</p>
+    <p class="lede">Five years turning research models into production systems: real-time monitoring, RAG pipelines, multi-agent orchestration, and large-scale ETL across NLP, vision, and multimodal data.</p>
+    <div class="hero-links">
+      <a class="alink" href="public/resume.pdf" target="_blank" rel="noopener">Résumé<span class="arr arr-dn">↓</span></a>
+      <a class="alink" href="https://github.com/rohitnanjundareddy" target="_blank" rel="noopener">GitHub<span class="arr arr-up">↗</span></a>
+      <a class="alink" href="https://www.linkedin.com/in/rohit-nanjundareddy/" target="_blank" rel="noopener">LinkedIn<span class="arr arr-up">↗</span></a>
+      <a class="alink" href="mailto:rohitnanjundareddy@gmail.com">Email<span class="arr arr-up">↗</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ 01 ABOUT ============ -->
+<section id="about">
+  <div class="wrap">
+    <div class="shead rv">
+      <span class="num">01</span>
+      <h2>About</h2>
+      <span class="tag">what I optimize for</span>
+      <div class="rule"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-prose rv">
+        <p>I'm a software and ML engineer with five years building and deploying machine learning systems across NLP, computer vision, and multimodal applications. Right now I'm a <em>Graduate Research Assistant at UIC</em>, developing transformer and Vision Transformer models for cancer-risk prediction and large-scale histopathology analysis.</p>
+        <p class="dim">In industry I shipped the kind of systems that have to keep working: CLIP-based real-time monitoring that cut QA effort 40%, GPT-powered RAG that lifted first-call resolution 25%, and ETL pipelines moving chat, voice, and document data in real time. Lately my focus is <em>multi-agent orchestration</em> and graph-based reasoning, the layer that decides which model runs, when, and why.</p>
+      </div>
+      <dl class="meta-dl rv">
+        <div class="row"><dt>Interests</dt><dd>Multi-agent systems, production ML, graph-based reasoning</dd></div>
+        <div class="row"><dt>Currently</dt><dd>Multi-agent RAG &amp; production RAG architectures</dd></div>
+        <div class="row"><dt>Research</dt><dd>M.S. thesis on game-theoretic multi-agent systems (under review)</dd></div>
+        <div class="row"><dt>Based in</dt><dd>San Francisco, CA</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 EXPERIENCE ============ -->
+<section id="experience">
+  <div class="wrap">
+    <div class="shead rv">
+      <span class="num">02</span>
+      <h2>Experience</h2>
+      <span class="tag">from research lab to production</span>
+      <div class="rule"></div>
+    </div>
+
+    <div class="xp rv">
+      <div class="xp-meta">May 2025 – May 2026<span class="loc">Chicago, IL</span></div>
+      <div>
+        <h3>Graduate Research Assistant, ML <span>@ University of Illinois Chicago</span></h3>
+        <ul>
+          <li>Built a <b>10+ agent LangGraph pipeline</b> with branching, retry logic, and self-correction to convert unstructured documents into structured PostgreSQL and MongoDB datasets, powering a doctors' dashboard for faster data access and review.</li>
+          <li>Designed a self-attention classifier on <b>RAD-DINO (ViT-B) embeddings</b>, fine-tuning the top two layers for breast-cancer detection on tomosynthesis imaging, reaching <b>0.93 AUROC</b> on imbalanced data.</li>
+          <li>Developed an MLP model using transformer embeddings to classify abnormal gene-expression patterns from tissue RNA.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="xp rv">
+      <div class="xp-meta">May 2023 – Aug 2024<span class="loc">Bangalore, India</span></div>
+      <div>
+        <h3>Senior Software Development Engineer, ML <span>@ 24/7.ai</span></h3>
+        <ul>
+          <li>Architected a real-time chat recommendation system using hybrid vector search, <b>KG-RAG</b> with reranking and grounding, and a fine-tuned LLM with guardrails for context-aware agent response suggestions, improving <b>First Call Resolution by 25%</b>.</li>
+          <li>Developed a <b>CLIP-based screen-monitoring</b> system on GCP Vertex AI using zero-shot vision, OCR signals, and event-driven pipelines to flag misuse in real time and improve client transparency.</li>
+          <li>Built multimodal ETL pipelines with <b>Apache Beam and Spark</b>, ingesting live chat, voice, and document streams into a unified PostgreSQL schema at sub-ms latency, autoscaled on Kubernetes and Docker under variable load.</li>
+          <li>Developed a hybrid agent-selection engine combining <b>Pinecone</b> vector embeddings and <b>Neo4j</b> knowledge-graph traversal for semantically aware, rule-compliant intent routing.</li>
+          <li>Optimized file-storage pipelines with Flask and async parallelism, cutting latency by <b>8s</b> and improving efficiency <b>70%</b>.</li>
+          <li>Managed and scaled <b>50+ production ML models at 99% uptime</b>, covering monitoring, drift detection, trajectory evaluation, task-success regression, alerting, and governance across training, deployment, A/B evaluation, and retraining.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="xp rv">
+      <div class="xp-meta">Jan 2020 – Apr 2023<span class="loc">Bangalore, India</span></div>
+      <div>
+        <h3>Software Development Engineer, ML <span>@ 24/7.ai</span></h3>
+        <ul>
+          <li>Led a dual online/offline agent-routing engine using agent vectors and intent knowledge graphs to match customer intent in real time, refine offline skill/KG weights post-chat, and track routing and resolution metrics on a custom dashboard.</li>
+          <li>Built an end-to-end conversational AI triage platform, fine-tuning <b>DistilBERT across 60+ intents</b> and orchestrating real-time session, page, and CRM context to deliver intent-aware, personalized dialogue at <b>sub-100ms p99</b> latency.</li>
+          <li>Developed a real-time agent-performance system using BiLSTM with attention-based conversation scoring and LightGBM forecasting (30-min / 1-hr horizons), improving agent utilization <b>15%</b> and cutting downtime <b>10%</b>.</li>
+          <li>Re-architected preprocessing and streaming into reactive Spring Boot microservices on GCP/AWS (Docker/Kubernetes), backed by MongoDB, sustaining <b>10K+ concurrent chats and 1K voice streams</b> and load-tested with Locust.</li>
+          <li>Optimized CNN/BiLSTM sentiment models to <b>94.2% accuracy</b>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 PROJECTS ============ -->
+<section id="projects">
+  <div class="wrap">
+    <div class="shead rv">
+      <span class="num">03</span>
+      <h2>Selected Projects</h2>
+      <span class="tag">systems, not demos</span>
+      <div class="rule"></div>
+    </div>
+
+    <div class="proj rv">
+      <span class="pn">01</span>
+      <div>
+        <h3>Real-Time Stock Forecasting with Multi-Agent RAG</h3>
+        <p class="ptag">Live market intelligence from a team of agents.</p>
+        <p>A multi-agent system fusing live market data, company signals, and financial news via LLM-based extraction and RAG. Combines Temporal Fusion Transformer, FinBERT sentiment, and TabNet for intraday and 30-day forecasts, at <b>68% accuracy</b>.</p>
+        <div class="stack"><span>LangChain</span><span>RAG</span><span>TFT</span><span>FinBERT</span><span>TabNet</span><span>Multi-Agent</span></div>
+      </div>
+    </div>
+
+    <div class="proj rv">
+      <span class="pn">02</span>
+      <div>
+        <h3>Deep RL for Sequential Decision Optimization</h3>
+        <p class="ptag">Decisions under uncertainty, learned.</p>
+        <p>A reinforcement-learning agent pairing rule-based planning with deep Q-learning (DRQN) to optimize decisions under uncertainty, with techniques that transfer to risk management and portfolio optimization.</p>
+        <div class="stack"><span>PyTorch</span><span>DRQN</span><span>Deep RL</span><span>Planning</span></div>
+        <div class="plinks"><a class="alink" href="https://github.com/rohitnanjundareddy/RLagent" target="_blank" rel="noopener">Code<span class="arr arr-up">↗</span></a></div>
+      </div>
+    </div>
+
+    <div class="proj rv">
+      <span class="pn">03</span>
+      <div>
+        <h3>InsureEase</h3>
+        <p class="ptag">Policy analysis with graph-backed retrieval.</p>
+        <p>An LLM-powered insurance document analyzer using RAG and a Neo4j knowledge graph to compare policies, extract structured insights, and generate recommendations. Processes uploads in <b>8s</b>, returns results in <b>2s</b>.</p>
+        <div class="stack"><span>RAG</span><span>Vector DBs</span><span>Neo4j</span><span>LLMs</span><span>FastAPI</span></div>
+        <div class="plinks">
+          <a class="alink" href="https://insure-ease-kappa.vercel.app" target="_blank" rel="noopener">Live demo<span class="arr arr-up">↗</span></a>
+          <a class="alink" href="https://github.com/rohitnanjundareddy/InsuranceMarketplace" target="_blank" rel="noopener">Code<span class="arr arr-up">↗</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj rv">
+      <span class="pn">04</span>
+      <div>
+        <h3>Medical Image Classification with Limited Data</h3>
+        <p class="ptag">Diagnosis from a handful of labels.</p>
+        <p>Data-efficient abnormality detection via few-shot and transfer learning with ResNet-18, DenseNet-121, and ViT foundation models. Reached <b>50.5% accuracy</b> in 10-shot settings using prototypical networks.</p>
+        <div class="stack"><span>PyTorch</span><span>Few-Shot</span><span>ViT</span><span>Prototypical Nets</span></div>
+        <div class="plinks"><a class="alink" href="https://github.com/rohitnanjundareddy/advancedML" target="_blank" rel="noopener">Code<span class="arr arr-up">↗</span></a></div>
+      </div>
+    </div>
+
+    <div class="proj rv">
+      <span class="pn">05</span>
+      <div>
+        <h3>Building an LLM from Scratch</h3>
+        <p class="ptag">Pretraining, end to end, on Spark.</p>
+        <p>An end-to-end LLM training workflow on Amazon EMR/Hadoop with a Spark sliding-window text generator, plus a conversational agent integrating Bedrock and Ollama via AWS Lambda and gRPC.</p>
+        <div class="stack"><span>AWS EMR</span><span>Spark</span><span>Lambda</span><span>gRPC</span><span>Bedrock</span><span>Ollama</span></div>
+        <div class="plinks"><a class="alink" href="https://github.com/rohitnanjundareddy/LLM" target="_blank" rel="noopener">Code<span class="arr arr-up">↗</span></a></div>
+      </div>
+    </div>
+
+    <div class="proj rv">
+      <span class="pn">06</span>
+      <div>
+        <h3>Intelligent Wumpus World Agent</h3>
+        <p class="ptag">Reasoning over a knowledge graph.</p>
+        <p>An LLM-driven reasoning agent using a structured knowledge graph for environment understanding, with belief-state search (POMDP-style) and LLM-based action planning, scoring <b>550/1000</b>.</p>
+        <div class="stack"><span>POMDP</span><span>Knowledge Graphs</span><span>LLM Reasoning</span><span>Planning</span></div>
+        <div class="plinks"><a class="alink" href="https://github.com/rohitnanjundareddy/llm_wumpus" target="_blank" rel="noopener">Code<span class="arr arr-up">↗</span></a></div>
+      </div>
+    </div>
+
+    <div id="moreProjects">
+      <div class="proj">
+        <span class="pn">07</span>
+        <div>
+          <h3>FinQA Benchmark Chatbot</h3>
+          <p class="ptag">Financial reasoning over filings.</p>
+          <p>A question-answering system over the FinQA benchmark, served as a FastAPI app with an embedded frontend, reaching <b>78 to 84% accuracy</b> against a 61% FinQANet baseline.</p>
+          <div class="stack"><span>FastAPI</span><span>RAG</span><span>FinQA</span><span>LLMs</span></div>
+          <div class="plinks"><a class="alink" href="https://github.com/rohitnanjundareddy/finqa" target="_blank" rel="noopener">Code<span class="arr arr-up">↗</span></a></div>
+        </div>
+      </div>
+
+      <div class="proj">
+        <span class="pn">08</span>
+        <div>
+          <h3>Intersectional Bias Audit for LLM Hiring Agents</h3>
+          <p class="ptag">Fairness, measured factorially.</p>
+          <p>A factorial audit of intersectional bias in LLM hiring agents across race, gender, university tier, and location, built on a 360-resume synthetic design (CS 517, Socially Responsible AI).</p>
+          <div class="stack"><span>LLM Evaluation</span><span>Fairness</span><span>Python</span></div>
+          <div class="plinks"><a class="alink" href="https://github.com/rohitnanjundareddy/Runtime_Intersectional_Bias_Detection" target="_blank" rel="noopener">Code<span class="arr arr-up">↗</span></a></div>
+        </div>
+      </div>
+
+      <div class="proj">
+        <span class="pn">09</span>
+        <div>
+          <h3>EventGraph: Catalyst Stock Screening</h3>
+          <p class="ptag">Hidden catalysts via relationship graphs.</p>
+          <p>An event-graph system linking SEC filings and entities to surface hidden market catalysts, using relationship graphs over structured and unstructured financial data.</p>
+          <div class="stack"><span>Knowledge Graphs</span><span>SEC Filings</span><span>NLP</span><span>Neo4j</span></div>
+        </div>
+      </div>
+
+      <div class="proj">
+        <span class="pn">10</span>
+        <div>
+          <h3>Campus Guide Robot (Misty II)</h3>
+          <p class="ptag">RAG and SLAM, on wheels.</p>
+          <p>An autonomous campus-navigation robot combining RAG-based question answering, SLAM localization, and NLP for natural interaction on the Misty II platform.</p>
+          <div class="stack"><span>RAG</span><span>SLAM</span><span>Robotics</span><span>NLP</span></div>
+          <div class="plinks"><a class="alink" href="https://github.com/rohitnanjundareddy/campus_guide_robot" target="_blank" rel="noopener">Code<span class="arr arr-up">↗</span></a></div>
+        </div>
+      </div>
+
+      <div class="proj">
+        <span class="pn">11</span>
+        <div>
+          <h3>Aloud: Free Text-to-Speech App</h3>
+          <p class="ptag">Natural speech, free to use.</p>
+          <p>A free text-to-speech Android app backed by a FastAPI + Piper service deployed on Hugging Face Spaces, turning text into natural-sounding audio on demand.</p>
+          <div class="stack"><span>FastAPI</span><span>Piper</span><span>Android</span><span>HF Spaces</span></div>
+          <div class="plinks"><a class="alink" href="https://github.com/rohitnanjundareddy/aloud" target="_blank" rel="noopener">Code<span class="arr arr-up">↗</span></a></div>
+        </div>
+      </div>
+
+      <div class="proj">
+        <span class="pn">12</span>
+        <div>
+          <h3>Adversarial Robustness &amp; Conformal Prediction</h3>
+          <p class="ptag">Stress-testing and calibrating vision models.</p>
+          <p>Adversarial attacks (FGSM / PGD) against traffic-sign recognition with VGG16 and ResNet50, paired with conformal prediction for calibrated uncertainty on CIFAR-10.</p>
+          <div class="stack"><span>PyTorch</span><span>Adversarial ML</span><span>Conformal Prediction</span></div>
+        </div>
+      </div>
+
+      <div class="proj">
+        <span class="pn">13</span>
+        <div>
+          <h3>3D Gaussian Splatting: Training Acceleration</h3>
+          <p class="ptag">Photoreal 3D scenes, trained in seconds.</p>
+          <p>Implemented and benchmarked two state-of-the-art 3DGS training-acceleration methods, <b>DashGaussian</b> (CVPR 2025) and <b>FastGS</b> (CVPR 2026), reproducing their optimization pipelines and CUDA rasterizers, and evaluating PSNR, SSIM, and LPIPS, training time, and Gaussian count across Mip-NeRF 360, Tanks &amp; Temples, and Deep Blending.</p>
+          <div class="stack"><span>PyTorch</span><span>CUDA</span><span>C++</span><span>3D Gaussian Splatting</span><span>COLMAP</span></div>
+          <div class="plinks">
+            <a class="alink" href="https://github.com/rohitnanjundareddy/DashGaussian_3DGS" target="_blank" rel="noopener">DashGaussian<span class="arr arr-up">↗</span></a>
+            <a class="alink" href="https://github.com/rohitnanjundareddy/FastGS_3D-Gaussian-Splatting" target="_blank" rel="noopener">FastGS<span class="arr arr-up">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-toggle">
+      <button id="projToggle" aria-expanded="false" aria-controls="moreProjects">Show all projects <span class="arr">↓</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 STACK & BACKGROUND ============ -->
+<section id="skills">
+  <div class="wrap">
+    <div class="shead rv">
+      <span class="num">04</span>
+      <h2>Stack &amp; Background</h2>
+      <span class="tag">the instruments</span>
+      <div class="rule"></div>
+    </div>
+
+    <div class="stack-grid">
+      <div class="scat rv"><h4>Languages</h4><div class="items"><span>Python</span><span>SQL</span><span>C++</span><span>Java</span><span>JavaScript</span></div></div>
+      <div class="scat rv"><h4>ML / AI</h4><div class="items"><span>PyTorch</span><span>TensorFlow</span><span>Scikit-learn</span><span>XGBoost</span><span>LightGBM</span><span>TabNet</span></div></div>
+      <div class="scat rv"><h4>Deep Learning</h4><div class="items"><span>CNN</span><span>RNN / LSTM / BiLSTM</span><span>Transformers (ViT, TFT)</span><span>Attention</span><span>Transfer Learning</span><span>RL</span><span>Diffusion</span><span>Meta-Learning</span></div></div>
+      <div class="scat rv"><h4>LLM / Agents / RAG</h4><div class="items"><span>LangChain</span><span>LangGraph</span><span>RAG Pipelines</span><span>Prompt Engineering</span><span>Knowledge Graphs</span><span>Agent Workflows</span><span>LLM Evaluation</span></div></div>
+      <div class="scat rv"><h4>Data &amp; Vector DBs</h4><div class="items"><span>PostgreSQL</span><span>BigQuery</span><span>MongoDB</span><span>DynamoDB</span><span>Redis</span><span>Pinecone</span><span>Neo4j</span><span>Cassandra</span></div></div>
+      <div class="scat rv"><h4>Cloud &amp; MLOps</h4><div class="items"><span>Kubernetes</span><span>Docker</span><span>Spark</span><span>Airflow</span><span>Kafka</span><span>Apache Beam</span><span>MLflow</span><span>CI/CD</span><span>AWS / GCP</span><span>FastAPI</span><span>gRPC</span></div></div>
+    </div>
+
+    <div class="bg-grid">
+      <div class="bg-block rv">
+        <h4>Education</h4>
+        <div class="edu">
+          <div class="when">Aug 2024 – May 2026</div>
+          <h5>University of Illinois Chicago</h5>
+          <p>M.S. in Computer Science · <b>GPA 3.85 / 4</b></p>
+        </div>
+        <div class="edu">
+          <div class="when">2016 – 2020</div>
+          <h5>Amrita School of Engineering, Bangalore</h5>
+          <p>B.Tech in Computer Science · <b>GPA 3.4 / 4</b></p>
+        </div>
+      </div>
+      <div class="bg-block rv">
+        <h4>Highlights</h4>
+        <ul class="hl">
+          <li><b>M.S. thesis</b> on game-theoretic multi-agent systems, in review and pending approval</li>
+          <li>Owned <b>50+ production ML models</b> at 99.7% uptime</li>
+          <li><b>40%</b> QA reduction via CLIP-based compliance monitoring</li>
+          <li><b>25%</b> first-call-resolution lift via RAG agent-assist</li>
+          <li><b>95%</b> extraction accuracy on clinical NLP pipeline</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 CONTACT ============ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="shead rv">
+      <span class="num">05</span>
+      <h2>Contact</h2>
+      <span class="tag">say hello</span>
+      <div class="rule"></div>
+    </div>
+    <a class="contact-big rv" href="mailto:rohitnanjundareddy@gmail.com">Let's build <em>something real.</em></a>
+    <div class="contact-links rv">
+      <a class="alink" href="mailto:rohitnanjundareddy@gmail.com">Email<span class="arr arr-up">↗</span></a>
+      <a class="alink" href="https://www.linkedin.com/in/rohit-nanjundareddy/" target="_blank" rel="noopener">LinkedIn<span class="arr arr-up">↗</span></a>
+      <a class="alink" href="https://github.com/rohitnanjundareddy" target="_blank" rel="noopener">GitHub<span class="arr arr-up">↗</span></a>
+      <a class="alink" href="public/resume.pdf" target="_blank" rel="noopener">Résumé<span class="arr arr-dn">↓</span></a>
+    </div>
+    <div class="contact-email rv">rohitnanjundareddy@gmail.com</div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <span class="c">© <span id="yr"></span> Rohit Nanjundareddy</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* theme: start from system pref, toggle in session */
+  const root = document.documentElement;
+  if (matchMedia('(prefers-color-scheme: light)').matches) root.setAttribute('data-theme','light');
+  document.getElementById('themeBtn').addEventListener('click', () => {
+    root.setAttribute('data-theme', root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  /* nav scrolled + mobile menu */
+  const nav = document.getElementById('nav');
+  const navMid = document.getElementById('navMid');
+  const menuBtn = document.getElementById('menuBtn');
+  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 20), { passive:true });
+  menuBtn.addEventListener('click', () => { const o = navMid.classList.toggle('open'); menuBtn.classList.toggle('open', o); });
+  navMid.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { navMid.classList.remove('open'); menuBtn.classList.remove('open'); }));
+
+  /* active section */
+  const links = [...navMid.querySelectorAll('a')];
+  const obs = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { links.forEach(l => l.classList.remove('active'));
+      const l = navMid.querySelector('a[href="#'+e.target.id+'"]'); if (l) l.classList.add('active'); }
+  }), { rootMargin: '-45% 0px -50% 0px' });
+  document.querySelectorAll('section[id]').forEach(s => obs.observe(s));
+
+  /* project show-all toggle */
+  const pt = document.getElementById('projToggle'), mp = document.getElementById('moreProjects');
+  pt.addEventListener('click', () => {
+    const open = mp.classList.toggle('show');
+    pt.classList.toggle('open', open);
+    pt.setAttribute('aria-expanded', open);
+    pt.firstChild.textContent = open ? 'Show fewer projects ' : 'Show all projects ';
+  });
+
+</script>
+</body>
+</html>
